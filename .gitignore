@@ -1,0 +1,5 @@
+.idea
+/assets/bundle
+/assets/json
+/node_modules
+/webpack/manifest

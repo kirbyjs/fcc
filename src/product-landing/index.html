@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plush Kirby's</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <nav id="nav-bar">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">
+                    <span id="brand-logo-inner">
+                        <img id="header-img" class="responsive-img" src="<%=require('./kirby-link.png').default%>" alt="Plush Kirby Link"/>
+                        <span>Plush Kirby's</span>
+                    </span>
+                </a>
+                <a href="#" data-target="mobile-nav" class="right sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="nav-link" href="#review">Customer Review</a></li>
+                    <li><a class="nav-link" href="#products">Products</a></li>
+                    <li><a class="nav-link" href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-nav">
+            <li><a href="#review">Customer Review</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </header>
+    <section class="container">
+        <form id="form" action="http://www.freecodecamp.com/email-submit">
+            <h4>Subscribe For New Plush Kirby's</h4>
+            <div class="subscription">
+                <div class="input-field">
+                    <input placeholder="Bro Enter Your Email To Subscribe" id="email" name="email" type="email" class="validate" requ>
+                    <label for="email">Email</label>
+                </div>
+                <div class="btn waves-effect waves-light" type="submit">
+                    <input id="submit" type="submit" value="Submit"/>
+                    <i class="material-icons right">send</i>
+                </div>
+            </div>
+        </form>
+        <div id="review">
+            <h4>Customer Review</h4>
+            <div class="video-container">
+                <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/cOw4Rf0rlbI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div id="products">
+            <h4>Products</h4>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%=require('./kirby-with-knife.png').default%>">
+                            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Kirby With A Knife</span>
+                            <p>A plush Kirby with the popular meme face!</p>
+                            <p>(Knife is not included)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%=require('./kirby-head-pillow.jpg').default%>">
+                            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Kirby Head Pillow</span>
+                            <p>Take a relaxing nap in this popular Kirby head pillow!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%=require('./kirby.jpg').default%>">
+                            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Kirby</span>
+                            <p>Our most popular Kirby! Get it while it's still available!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%=require('./kirby-with-gun.png').default%>">
+                            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">Kirby With A Knife</span>
+                            <p>A plush Kirby with the popular meme face!</p>
+                            <p>(Gun is not included)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="faq">
+            <h4>FAQ</h4>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">Are the Kirby's Possessed?</div>
+                    <div class="collapsible-body"><span>Unlikely, but it's probably better if you keep your knives and guns in a safe place if your plush Kirby decides to go rouge.</span></div>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            Made with <span class="heart">&hearts;</span> by Kirby
+        </footer>
+    </section>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+</body>
+</html>
