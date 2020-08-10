@@ -11,7 +11,7 @@ for obj in my_bucket.objects.all():
     if (Object.key.endswith('index.html')):
         Object.copy_from(
             CopySource={
-                'Bucket': 'kirbyjs.com',
+                'Bucket': 'fcc.kirbyjs.com',
                 'Key': Object.key,
             },
             ContentType='text/html',

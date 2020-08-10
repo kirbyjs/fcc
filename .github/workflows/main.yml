@@ -1,4 +1,4 @@
-name: kirbyjs
+name: fcc_kirbyjs
 on:
   push:
     branches:
