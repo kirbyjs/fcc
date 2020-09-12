@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "experimentalDecorators": true,
+    "module": "Commonjs",
+    "target": "ES5",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noEmit": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "paths": {
+      "src*": ["./src*"]
+    }
+  }
+}

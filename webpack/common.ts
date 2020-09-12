@@ -1,8 +1,9 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import path from 'path';
 
 const source = path.resolve(__dirname, '..', 'src');
 const publicAssetsDirectory = path.resolve(__dirname, '..', 'assets', 'public');
@@ -33,13 +34,20 @@ const scssCommonLoaders = [
     }
 ];
 
-module.exports = {
+const webpackConfig: webpack.Configuration = {
+    resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.json']
+    },
     entry: {
         main: './src/index.js',
         'tribute/index': './src/tribute/index.js',
         'survey-form/index': './src/survey-form/index.js',
         'product-landing/index': './src/product-landing/index.js',
-        'tech-docs/index': './src/tech-docs/index.js'
+        'tech-docs/index': './src/tech-docs/index.js',
+        'random-quote/index': [
+            'react-hot-loader/babel',
+            './src/random-quote/index.tsx'
+        ]
     },
     module: {
         rules: [
@@ -53,6 +61,15 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.(ts|js)x?$/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        plugins: isProduction ? [] : ['react-hot-loader/babel']
+                    }
+                }
             },
             {
                 test: /\.scss/,
@@ -85,6 +102,11 @@ module.exports = {
             filename: 'tech-docs/index.html',
             template: path.resolve(source, 'tech-docs', 'index.html')
         }),
+        new HtmlWebpackPlugin({
+            chunks: ['random-quote/index'],
+            filename: 'random-quote/index.html',
+            template: path.resolve(source, 'random-quote', 'index.html')
+        }),
         new CopyPlugin({
             patterns: [{
                 from: publicAssetsDirectory
@@ -92,3 +114,5 @@ module.exports = {
         })
     ]
 };
+
+export default webpackConfig;

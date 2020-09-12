@@ -1,10 +1,12 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const webpackConfig = require('./common');
-const path = require('path');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
+import webpack from 'webpack';
+import path from 'path';
+import webpackConfig from './common';
 
-module.exports = {
+const plugins: webpack.Plugin[] = webpackConfig.plugins || [];
+const config: webpack.Configuration = {
     ...webpackConfig,
     mode: 'production',
     optimization: {
@@ -19,9 +21,11 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
-        ...webpackConfig.plugins,
+        ...plugins,
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         })
     ]
 };
+
+export default config;

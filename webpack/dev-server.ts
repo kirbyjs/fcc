@@ -1,10 +1,12 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
-const webpackConfig = require('./common');
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path';
+import webpackConfig from './common';
 
 const source = path.resolve(__dirname, '..', '..', 'src');
+const plugins: webpack.Plugin[] = webpackConfig.plugins || [];
 
-module.exports = {
+const config: webpack.Configuration = {
     ...webpackConfig,
     mode: 'development',
     devtool: 'source-map',
@@ -19,9 +21,11 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
-        ...webpackConfig.plugins,
+        ...plugins,
         new MiniCssExtractPlugin({
             filename: '[name].css'
         })
     ]
 };
+
+export default config;

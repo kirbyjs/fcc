@@ -7,8 +7,8 @@
   "scripts": {
     "build": "rm -rf ./assets/bundle && cross-env NODE_ENV=production npm run webpack:prod",
     "start": "npm run webpack:dev",
-    "webpack:dev": "webpack-dev-server --config webpack/dev-server.js --hot",
-    "webpack:prod": "webpack --config webpack/app.js"
+    "webpack:dev": "webpack-dev-server --config webpack/dev-server.ts --hot",
+    "webpack:prod": "webpack --config webpack/app.ts"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,24 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@hot-loader/react-dom": "^16.13.0",
+    "@types/autoprefixer": "^9.7.2",
+    "@types/copy-webpack-plugin": "^6.0.0",
+    "@types/html-webpack-plugin": "^3.2.3",
+    "@types/mini-css-extract-plugin": "^0.9.1",
+    "@types/optimize-css-assets-webpack-plugin": "^5.0.1",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/terser-webpack-plugin": "^4.1.0",
+    "@types/webpack": "^4.41.22",
+    "@types/webpack-dev-server": "^3.11.0",
+    "@types/webpack-env": "^1.15.2",
     "autoprefixer": "~9.8.6",
+    "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.0.3",
     "cross-env": "~7.0.2",
     "css-loader": "~4.2.1",
@@ -28,9 +45,13 @@
     "mini-css-extract-plugin": "~0.9.0",
     "optimize-css-assets-webpack-plugin": "~5.0.3",
     "postcss-loader": "~3.0.0",
+    "prettier": "^2.1.1",
+    "react-hot-loader": "^4.12.21",
     "sass": "~1.26.10",
     "sass-loader": "^9.0.3",
     "terser-webpack-plugin": "~4.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2",
     "webpack": "~4.44.1",
     "webpack-cli": "~3.3.12",
     "webpack-dev-server": "~3.11.0"
