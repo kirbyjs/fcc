@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import '../../sass/random-quote/random-quote.scss';
+import 'highlight.js/styles/atom-one-dark.css';
+import '../../sass/markdown-previewer/markdown-previewer.scss';
 
 ReactDOM.render(
     <App/>,

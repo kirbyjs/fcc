@@ -29,7 +29,9 @@ const scssCommonLoaders = [
     {
         loader: 'postcss-loader',
         options: {
-            plugins: [autoprefixer()]
+            postcssOptions: {
+                plugins: [autoprefixer()]
+            }
         }
     }
 ];
@@ -44,10 +46,8 @@ const webpackConfig: webpack.Configuration = {
         'survey-form/index': './src/survey-form/index.js',
         'product-landing/index': './src/product-landing/index.js',
         'tech-docs/index': './src/tech-docs/index.js',
-        'random-quote/index': [
-            'react-hot-loader/babel',
-            './src/random-quote/index.tsx'
-        ]
+        'random-quote/index': './src/random-quote/index.tsx',
+        'markdown-previewer/index': './src/markdown-previewer/index.tsx'
     },
     module: {
         rules: [
@@ -72,7 +72,7 @@ const webpackConfig: webpack.Configuration = {
                 }
             },
             {
-                test: /\.scss/,
+                test: /\.s?css/,
                 use: scssCommonLoaders
             }
         ]
@@ -106,6 +106,11 @@ const webpackConfig: webpack.Configuration = {
             chunks: ['random-quote/index'],
             filename: 'random-quote/index.html',
             template: path.resolve(source, 'random-quote', 'index.html')
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['markdown-previewer/index'],
+            filename: 'markdown-previewer/index.html',
+            template: path.resolve(source, 'markdown-previewer', 'index.html')
         }),
         new CopyPlugin({
             patterns: [{
