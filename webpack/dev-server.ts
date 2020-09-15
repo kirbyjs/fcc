@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
-import webpackConfig from './common';
+import webpackConfig, {projectDirectories} from './common';
 
 const source = path.resolve(__dirname, '..', '..', 'src');
 const entry = webpackConfig.entry as webpack.Entry;
@@ -17,17 +17,13 @@ const config: webpack.Configuration = {
         open: true,
         port: 9020
     },
-    entry: {
-        ...entry,
-        'random-quote/index': [
+    entry: projectDirectories.reduce((entries, dir) => ({
+        ...entries,
+        [`${dir}/index`]: [
             'react-hot-loader/babel',
-            entry['random-quote/index'] as string
-        ],
-        'markdown-previewer/index': [
-            'react-hot-loader/babel',
-            entry['markdown-previewer/index'] as string
+            entry[`${dir}/index`]
         ]
-    },
+    }), {}),
     output: {
         filename: '[name].js',
         publicPath: '/'

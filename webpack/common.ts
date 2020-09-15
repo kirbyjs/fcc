@@ -5,6 +5,16 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
+export const projectDirectories = [
+    'tribute',
+    'survey-form',
+    'product-landing',
+    'tech-docs',
+    'random-quote',
+    'markdown-previewer',
+    'drum-machine'
+];
+
 const source = path.resolve(__dirname, '..', 'src');
 const publicAssetsDirectory = path.resolve(__dirname, '..', 'assets', 'public');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -42,17 +52,15 @@ const webpackConfig: webpack.Configuration = {
     },
     entry: {
         main: './src/index.js',
-        'tribute/index': './src/tribute/index.js',
-        'survey-form/index': './src/survey-form/index.js',
-        'product-landing/index': './src/product-landing/index.js',
-        'tech-docs/index': './src/tech-docs/index.js',
-        'random-quote/index': './src/random-quote/index.tsx',
-        'markdown-previewer/index': './src/markdown-previewer/index.tsx'
+        ...projectDirectories.reduce((entries, dir) => ({
+            ...entries,
+            [`${dir}/index`]: `./src/${dir}/index`
+        }), {})
     },
     module: {
         rules: [
             {
-                test: /\.(jpg|jp2|webp|pdf|png|svg)$/,
+                test: /\.(jpg|jp2|webp|pdf|png|svg|mp3)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -82,36 +90,13 @@ const webpackConfig: webpack.Configuration = {
             chunks: ['main'],
             template: path.resolve(source, 'index.html')
         }),
-        new HtmlWebpackPlugin({
-            chunks: ['tribute/index'],
-            filename: 'tribute/index.html',
-            template: path.resolve(source, 'tribute', 'index.html')
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['survey-form/index'],
-            filename: 'survey-form/index.html',
-            template: path.resolve(source, 'survey-form', 'index.html')
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['product-landing/index'],
-            filename: 'product-landing/index.html',
-            template: path.resolve(source, 'product-landing', 'index.html')
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['tech-docs/index'],
-            filename: 'tech-docs/index.html',
-            template: path.resolve(source, 'tech-docs', 'index.html')
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['random-quote/index'],
-            filename: 'random-quote/index.html',
-            template: path.resolve(source, 'random-quote', 'index.html')
-        }),
-        new HtmlWebpackPlugin({
-            chunks: ['markdown-previewer/index'],
-            filename: 'markdown-previewer/index.html',
-            template: path.resolve(source, 'markdown-previewer', 'index.html')
-        }),
+        ...projectDirectories.map((dir) =>
+            new HtmlWebpackPlugin({
+                chunks: [`${dir}/index`],
+                filename: `${dir}/index.html`,
+                template: path.resolve(source, dir, 'index.html')
+            })
+        ),
         new CopyPlugin({
             patterns: [{
                 from: publicAssetsDirectory
