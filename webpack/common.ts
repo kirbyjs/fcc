@@ -13,7 +13,8 @@ export const projectDirectories = [
     'random-quote',
     'markdown-previewer',
     'drum-machine',
-    'calculator'
+    'calculator',
+    'pomodoro'
 ];
 
 const source = path.resolve(__dirname, '..', 'src');

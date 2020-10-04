@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import '../../sass/random-quote/random-quote.scss';
+import './sass/random-quote.scss';
 
 ReactDOM.render(
     <App/>,

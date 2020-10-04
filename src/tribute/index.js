@@ -1,1 +1,1 @@
-import '../../sass/tribute/tribute.scss';
+import './sass/tribute.scss';

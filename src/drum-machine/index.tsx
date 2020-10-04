@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import '../../sass/drum-machine/drum-machine.scss';
+import './sass/drum-machine.scss';
 
 ReactDOM.render(
     <App/>,

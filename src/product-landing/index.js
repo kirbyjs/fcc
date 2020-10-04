@@ -1,4 +1,4 @@
-import '../../sass/product-landing/product-landing.scss';
+import './sass/product-landing.scss';
 
 document.addEventListener('DOMContentLoaded', function() {
     window.M.Sidenav.init(document.querySelectorAll('.sidenav'), {
