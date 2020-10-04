@@ -12,7 +12,8 @@ export const projectDirectories = [
     'tech-docs',
     'random-quote',
     'markdown-previewer',
-    'drum-machine'
+    'drum-machine',
+    'calculator'
 ];
 
 const source = path.resolve(__dirname, '..', 'src');
@@ -75,7 +76,7 @@ const webpackConfig: webpack.Configuration = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        plugins: isProduction ? [] : ['react-hot-loader/babel']
+                        plugins: isProduction ? [] : ['react-refresh/babel']
                     }
                 }
             },

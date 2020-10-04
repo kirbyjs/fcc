@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import path from 'path';
 import webpackConfig, {projectDirectories} from './common';
 
@@ -19,10 +20,7 @@ const config: webpack.Configuration = {
     },
     entry: projectDirectories.reduce((entries, dir) => ({
         ...entries,
-        [`${dir}/index`]: [
-            'react-hot-loader/babel',
-            entry[`${dir}/index`]
-        ]
+        [`${dir}/index`]: entry[`${dir}/index`]
     }), {}),
     output: {
         filename: '[name].js',
@@ -30,6 +28,7 @@ const config: webpack.Configuration = {
     },
     plugins: [
         ...plugins,
+        new ReactRefreshWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css'
         })

@@ -38,7 +38,7 @@ const DrumPad = React.memo((props: DrumPadProps) => {
         window.addEventListener('keyup', onKeyUp)
         return () => {
             window.removeEventListener('keydown', onKeyDown);
-            window.removeEventListener('keyup', onKeyDown);
+            window.removeEventListener('keyup', onKeyUp);
         };
     }, []);
 
