@@ -1,20 +1,17 @@
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import path from 'path';
 import webpackConfig, {projectDirectories} from './common';
 
-const source = path.resolve(__dirname, '..', '..', 'src');
-const entry = webpackConfig.entry as webpack.Entry;
-const plugins: webpack.Plugin[] = webpackConfig.plugins || [];
+const entry = webpackConfig.entry as { [key: string]: string };
+const plugins = webpackConfig.plugins || [];
 
 const config: webpack.Configuration = {
     ...webpackConfig,
     mode: 'development',
     devtool: 'source-map',
     devServer: {
-        contentBase: [source],
-        watchContentBase: true,
+        host: 'localhost',
         open: true,
         port: 9020
     },
@@ -28,6 +25,7 @@ const config: webpack.Configuration = {
     },
     plugins: [
         ...plugins,
+        new webpack.HotModuleReplacementPlugin(),
         new ReactRefreshWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css'

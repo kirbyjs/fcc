@@ -1,11 +1,11 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import path from 'path';
 import webpackConfig from './common';
 
-const plugins: webpack.Plugin[] = webpackConfig.plugins || [];
+const plugins = webpackConfig.plugins || [];
 const config: webpack.Configuration = {
     ...webpackConfig,
     mode: 'production',
@@ -13,7 +13,7 @@ const config: webpack.Configuration = {
         splitChunks: {
             chunks: 'initial'
         },
-        minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin()]
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin()]
     },
     output: {
         filename: '[name].[chunkhash].js',

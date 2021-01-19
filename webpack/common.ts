@@ -22,11 +22,7 @@ const publicAssetsDirectory = path.resolve(__dirname, '..', 'assets', 'public');
 const isProduction = process.env.NODE_ENV === 'production';
 const scssCommonLoaders = [
     {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-            hmr: !isProduction,
-            reloadAll: !isProduction
-        }
+        loader: MiniCssExtractPlugin.loader
     },
     {
         loader: 'css-loader',
