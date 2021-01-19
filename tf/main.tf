@@ -4,9 +4,17 @@ terraform {
     key    = "kirbyjs/fcc/prod.tf"
     region = "us-east-1"
   }
+
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 3.24"
+    }
+  }
+
+  required_version = "~> 0.14"
 }
 
 provider "aws" {
-  version = "~> 3.24"
   region  = "us-east-1"
 }
