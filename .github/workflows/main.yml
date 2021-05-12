@@ -49,5 +49,9 @@ jobs:
           aws-region: us-east-1
       - name: deploy
         run: |
-          aws s3 sync ./assets/bundle s3://fcc.kirbyjs.com/ --cache-control max-age=31536000
+          cd dist
+          mkdir calculator drum-machine markdown-previewer pomodoro random-quote
+          find calculator drum-machine markdown-previewer pomodoro random-quote -exec cp index.html {} \;
+          cd ..
+          aws s3 sync ./dist s3://fcc.kirbyjs.com/ --cache-control max-age=31536000
           python ./scripts/cache-control-s3-files.py

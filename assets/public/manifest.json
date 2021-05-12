@@ -1,9 +1,0 @@
-{
-  "name": "Free Code Camp - Kirby Simmons",
-  "short_name": "@kirbyjs/fcc",
-  "display": "standalone",
-  "start_url": "/",
-  "background_color": "#f6f6f8",
-  "theme_color": "#c60021",
-  "icons": []
-}

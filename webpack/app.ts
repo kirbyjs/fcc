@@ -2,7 +2,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
-import path from 'path';
 import webpackConfig from './common';
 
 const plugins = webpackConfig.plugins || [];
@@ -17,7 +16,6 @@ const config: webpack.Configuration = {
     },
     output: {
         filename: '[name].[chunkhash].js',
-        path: path.resolve(__dirname, '..', 'assets', 'bundle'),
         publicPath: '/'
     },
     plugins: [

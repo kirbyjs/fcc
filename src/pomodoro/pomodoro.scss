@@ -1,20 +1,3 @@
-body {
-  background-color: #ee6e73;
-  color: darken(#333, 5%);
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-}
-
-#root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
 #pomodoro-timer {
   line-height: 1;
   min-width: 450px;

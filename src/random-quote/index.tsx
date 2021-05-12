@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './components/App';
-import './sass/random-quote.scss';
+import './random-quote.scss';
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
-);
+export default function RandomQuote() {
+    return <App/>;
+}

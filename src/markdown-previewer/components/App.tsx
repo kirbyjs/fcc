@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
 import CodeBlock from './CodeBlock';
 
 export default function App() {
@@ -31,10 +32,10 @@ There's also [links](https://www.freecodecamp.com), and
 
 And if you want to get really crazy, even tables:
 
-Wild Header | Crazy Header | Another Header?
------------- | ------------- | ------------- 
-Your content can | be here, and it | can be here....
-And here. | Okay. | I think we get it.
+| Wild Header | Crazy Header | Another Header? |
+| ----------- | ------------ | --------------- | 
+| Your content can | be here, and it | can be here.... |
+| And here. | Okay. | I think we get it. |
 
 - And of course there are lists.
   - Some are bulleted.
@@ -52,7 +53,7 @@ And here. | Okay. | I think we get it.
     `);
 
     return (
-        <>
+        <div id='markdown-wrapper'>
             <textarea
                 id='editor'
                 onChange={(e) => setMarkdown(e.target.value)}
@@ -60,10 +61,11 @@ And here. | Okay. | I think we get it.
             />
             <div id='preview'>
                 <ReactMarkdown
-                    source={markdown}
-                    renderers={{code: CodeBlock}}
+                    remarkPlugins={[gfm]}
+                    children={markdown}
+                    components={{code: CodeBlock}}
                 />
             </div>
-        </>
+        </div>
     );
 }

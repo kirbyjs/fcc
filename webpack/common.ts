@@ -2,23 +2,9 @@ import webpack from 'webpack';
 import autoprefixer from 'autoprefixer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
-export const projectDirectories = [
-    'tribute',
-    'survey-form',
-    'product-landing',
-    'tech-docs',
-    'random-quote',
-    'markdown-previewer',
-    'drum-machine',
-    'calculator',
-    'pomodoro'
-];
-
 const source = path.resolve(__dirname, '..', 'src');
-const publicAssetsDirectory = path.resolve(__dirname, '..', 'assets', 'public');
 const isProduction = process.env.NODE_ENV === 'production';
 const scssCommonLoaders = [
     {
@@ -48,25 +34,17 @@ const webpackConfig: webpack.Configuration = {
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json']
     },
-    entry: {
-        main: './src/index.js',
-        ...projectDirectories.reduce((entries, dir) => ({
-            ...entries,
-            [`${dir}/index`]: `./src/${dir}/index`
-        }), {})
-    },
+    entry: [
+        './src/index.tsx'
+    ],
     module: {
         rules: [
             {
                 test: /\.(jpg|jp2|webp|pdf|png|svg|mp3)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[name].[contenthash].[ext]'
-                        }
-                    }
-                ]
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name].[contenthash][ext]'
+                }
             },
             {
                 test: /\.(ts|js)x?$/,
@@ -85,20 +63,9 @@ const webpackConfig: webpack.Configuration = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            favicon: path.resolve(source, 'favicon.ico'),
             chunks: ['main'],
-            template: path.resolve(source, 'index.html')
-        }),
-        ...projectDirectories.map((dir) =>
-            new HtmlWebpackPlugin({
-                chunks: [`${dir}/index`],
-                filename: `${dir}/index.html`,
-                template: path.resolve(source, dir, 'index.html')
-            })
-        ),
-        new CopyPlugin({
-            patterns: [{
-                from: publicAssetsDirectory
-            }]
+            template: path.resolve(source, 'index.ejs')
         })
     ]
 };

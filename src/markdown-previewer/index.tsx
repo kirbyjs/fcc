@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import App from './components/App';
 import 'highlight.js/styles/atom-one-dark.css';
-import './sass/markdown-previewer.scss';
+import './markdown-previewer.scss';
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
-);
+export default function MarkdownPreviewer() {
+    return <App/>;
+}

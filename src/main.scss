@@ -1,5 +1,30 @@
 body {
-  a {
-    display: block;
+  background-color: lighten(#ee6e73, 25%);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100vw;
+
+    nav {
+      flex: 0;
+    }
+
+    > div {
+      align-self: center;
+      margin: auto 0;
+    }
+  }
+
+  nav {
+    align-self: flex-start;
   }
 }
